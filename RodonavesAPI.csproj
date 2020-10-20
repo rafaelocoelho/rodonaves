@@ -1,0 +1,71 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20201019145427_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019145427_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019145628_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019145628_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019151933_AjustCampoNomeCompletoDaEntidadeCliente.cs" />
+    <Compile Remove="Migrations\20201019151933_AjustCampoNomeCompletoDaEntidadeCliente.Designer.cs" />
+    <Compile Remove="Migrations\20201019152245_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019152245_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019163219_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019163219_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019165624_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019165624_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019165825_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019165825_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019175134_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019175134_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019180620_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019180620_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019183304_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019183304_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019183936_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019183936_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019184128_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019184128_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019184303_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019184303_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019184558_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019184558_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019184748_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019184748_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019185247_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019185247_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019185425_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019185425_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019185855_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019185855_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019185942_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019185942_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019190455_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019190455_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019190839_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019190839_CriarBancoDeDados.Designer.cs" />
+    <Compile Remove="Migrations\20201019191008_CriarBancoDeDados.cs" />
+    <Compile Remove="Migrations\20201019191008_CriarBancoDeDados.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.3" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+
+</Project>
