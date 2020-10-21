@@ -30,7 +30,7 @@ namespace RodonavesAPI.Models
 
         [
             Required(ErrorMessage = "O campo CNPJ é obrigatório."),
-            StringLength(11, ErrorMessage = "O campo CNPJ precisa ter 11 digitos.", MinimumLength = 11)
+            StringLength(14, ErrorMessage = "O campo CNPJ precisa ter 14 digitos.", MinimumLength = 14)
         ]
         public string CNPJ { get; set; }
 

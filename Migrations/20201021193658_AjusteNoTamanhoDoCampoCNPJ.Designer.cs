@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RodonavesAPI.Data;
 
 namespace RodonavesAPI.Migrations
 {
     [DbContext(typeof(RodonavesAPIContext))]
-    partial class RodonavesAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20201021193658_AjusteNoTamanhoDoCampoCNPJ")]
+    partial class AjusteNoTamanhoDoCampoCNPJ
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
