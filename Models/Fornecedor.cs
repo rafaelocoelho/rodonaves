@@ -30,14 +30,15 @@ namespace RodonavesAPI.Models
 
         [
             Required(ErrorMessage = "O campo CNPJ é obrigatório."),
-            StringLength(11, ErrorMessage = "O campo CNPJ precisa ter 14 digitos.", MinimumLength = 11)
+            StringLength(11, ErrorMessage = "O campo CNPJ precisa ter 11 digitos.", MinimumLength = 11)
         ]
-        public int CNPJ { get; set; }
+        public string CNPJ { get; set; }
 
         [
             Required(ErrorMessage = "O campo Endereço é obrigatório."),
             DisplayName("Nome Completo"),
             StringLength(150, ErrorMessage = "O campo Endereço pode ter entre 5 e 150 caracteres.", MinimumLength = 5)
+
         ]
         public string Endereco { get; set; }
 
@@ -47,10 +48,16 @@ namespace RodonavesAPI.Models
         ]
         public string Bairro { get; set; }
 
-        [Required(ErrorMessage = "O campo Cidade é obrigatório.")]
+        [
+            ForeignKey("ClienteId"),
+            Required(ErrorMessage = "O campo Cidade é obrigatório.")
+        ]
         public int CidadeId { get; set; }
 
-        [Required(ErrorMessage = "O campo Estado é obrigatório.")]
+        [
+            ForeignKey("EstadoId"),
+            Required(ErrorMessage = "O campo Estado é obrigatório.")
+        ]
         public int EstadoId { get; set; }
 
         [
@@ -65,9 +72,15 @@ namespace RodonavesAPI.Models
         ]
         public DateTime DataDeCriacao { get; set; }
 
-        [DisplayName("Atualizado em")]
+        [
+            DisplayName("Atualizado em"),
+            DatabaseGenerated(DatabaseGeneratedOption.Computed)
+        ]
         public DateTime DataDeAtualizacao { get; set; }
 
-        public ICollection<FornecedorTelefone> FornecedorTelefones { get; set; }
+        [DefaultValue(false)]
+        public bool Inativo { get; set; }
+
+        public virtual ICollection<FornecedorTelefone> FornecedorTelefones { get; set; }
     }
 }

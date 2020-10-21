@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace RodonavesAPI.Models
@@ -23,7 +25,10 @@ namespace RodonavesAPI.Models
         ]
         public string Numero { get; set; }
 
-        public Fornecedor Fornecedor { get; set; }
+        [IgnoreDataMember]
+        public int? FornecedorId { get; set; }
 
+        [IgnoreDataMember]
+        public virtual Fornecedor Fornecedor { get; set; }
     }
 }

@@ -13,7 +13,10 @@ namespace RodonavesAPI.Models
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "O campo Estado é obrigatório.")]
+        [
+            ForeignKey("EstadoId"),
+            Required(ErrorMessage = "O campo Estado é obrigatório.")
+        ]
         public int EstadoId { get; set; }
 
         [
@@ -21,5 +24,6 @@ namespace RodonavesAPI.Models
             Required(ErrorMessage = "O campo Cidade é obrigatório.")
         ]
         public string Descricao { get; set; }
+
     }
 }

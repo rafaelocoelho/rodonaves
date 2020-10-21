@@ -47,11 +47,15 @@ namespace RodonavesAPI.Models
         public string Bairro { get; set; }
 
         [
+            ForeignKey("ClienteId"),
             Required(ErrorMessage = "O campo Cidade é obrigatório.")
         ]
         public int CidadeId { get; set; }
 
-        [Required(ErrorMessage = "O campo Estado é obrigatório.")]
+        [
+            ForeignKey("EstadoId"),
+            Required(ErrorMessage = "O campo Estado é obrigatório.")
+        ]
         public int EstadoId { get; set; }
 
         [
@@ -66,11 +70,17 @@ namespace RodonavesAPI.Models
         ]
         public DateTime DataDeCriacao { get; set; }
 
-        [DisplayName("Atualizado em")]
+        [
+            DisplayName("Atualizado em"),
+            DatabaseGenerated(DatabaseGeneratedOption.Computed)
+        ]
         public DateTime DataDeAtualizacao { get; set; }
 
         [Required(ErrorMessage = "O campo Telefone é obrigário.")]
 
-        public ICollection<ClienteTelefone> ClienteTelefones { get; set; }
+        [DefaultValue(false)]
+        public bool Inativo { get; set; }
+
+        public virtual ICollection<ClienteTelefone> ClienteTelefones { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace RodonavesAPI.Models
@@ -23,6 +24,10 @@ namespace RodonavesAPI.Models
         ]
         public string Numero { get; set; }
 
-        public Cliente Cliente { get; set; }
+        [IgnoreDataMember]
+        public int? ClienteId { get; set; }
+
+        [IgnoreDataMember]
+        public virtual Cliente Cliente { get; set; }
     }
 }
