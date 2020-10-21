@@ -24,92 +24,142 @@ namespace RodonavesAPI.Controllers
 
         // GET: api/Clientes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Cliente>>> GetCliente()
+        public async Task<ActionResult<IEnumerable<ClienteDTO>>> GetCliente()
         {
-            return await _context.Cliente.Include(c => c.ClienteTelefones).ToListAsync();
+            var clientes = await _context.Cliente
+                .Include(c => c.ClienteTelefones)
+                .Select(c => ClienteDTO(c))
+                .ToListAsync();
+
+            return clientes;
         }
 
         // GET: api/Clientes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<Cliente>>> GetCliente(int id)
+        public async Task<ActionResult<ClienteDTO>> GetCliente(int id)
         {
-            var cliente = await _context.Cliente.Where(c => c.Id == id).Include(c => c.ClienteTelefones).ToListAsync();
+            var cliente = await _context.Cliente
+                .Include(c => c.ClienteTelefones)
+                .Where(c => c.Id == id)
+                .SingleOrDefaultAsync();
 
             if (cliente == null)
             {
                 return NotFound();
             }
 
-
-            return cliente;        
+            return ClienteDTO(cliente);
+                 
         }
 
         // PUT: api/Clientes/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCliente(int id, Cliente cliente)
+        public async Task<IActionResult> PutCliente(int id, Cliente c)
         {
-            if (id != cliente.Id)
+            if (id != c.Id)
             {
                 return BadRequest();
             }
 
-            _context.Cliente.Update(cliente);
+            Cliente cliente = await _context.Cliente.FindAsync(id);
+            if (cliente == null)
+            {
+                return NotFound();
+            }
+
+            cliente.Id = cliente.Id;
+            cliente.NomeCompleto = cliente.NomeCompleto;
+            cliente.CPF = cliente.CPF;
+            cliente.Endereco = cliente.Endereco;
+            cliente.Bairro = cliente.Bairro;
+            cliente.CidadeId = cliente.CidadeId;
+            cliente.EstadoId = cliente.EstadoId;
+            cliente.CEP = cliente.CEP;
+            cliente.ClienteTelefones = cliente.ClienteTelefones;
+            cliente.Inativo = cliente.Inativo;
 
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException) when(!ClienteExists(id))
             {
-                if (!ClienteExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw new SystemException("Não foi possível atualizar os registros.");
-                }
+                return NotFound();
             }
 
-            return CreatedAtAction("GetCliente", new { id = cliente.Id }, cliente);
+            return Ok();
         }
 
         // POST: api/Clientes
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Cliente>> PostCliente(Cliente cliente)
+        public async Task<ActionResult> PostCliente(Cliente cliente)
         {
-            _context.Cliente.Add(cliente);
+            _context.Cliente.Add(new Cliente
+            {
+                NomeCompleto = cliente.NomeCompleto,
+                CPF = cliente.CPF,
+                Endereco = cliente.Endereco,
+                Bairro = cliente.Bairro,
+                CidadeId = cliente.CidadeId,
+                EstadoId = cliente.EstadoId,
+                CEP = cliente.CEP,
+                ClienteTelefones = cliente.ClienteTelefones
+            });
+
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCliente", new { id = cliente.Id }, cliente);
+            return Ok();
         }
 
         // DELETE: api/Clientes/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Cliente>> DeleteCliente(int id)
         {
-            var cliente = await _context.Cliente.FindAsync(id);
+            var cliente = await _context.Cliente
+                .Include(c => c.ClienteTelefones)
+                .Where(c => c.Id == id)
+                .SingleAsync();
+
             if (cliente == null)
             {
                 return NotFound();
             }
 
-            var clienteTelefones = _context.ClienteTelefones.Where(c => c.Cliente == cliente);
+            var clienteTelefones = _context.ClienteTelefones.Where(ct => ct.ClienteId == id);
             _context.ClienteTelefones.RemoveRange(clienteTelefones);
 
             _context.Cliente.Remove(cliente);
-            await _context.SaveChangesAsync();
 
-            return cliente;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException) when (!ClienteExists(id))
+            {
+                return NotFound();
+            }
+
+            return Ok();
         }
 
-        private bool ClienteExists(int id)
+        private bool ClienteExists(int id) =>
+            _context.Cliente.Any(c => c.Id == id);
+
+        private static ClienteDTO ClienteDTO(Cliente cliente)
         {
-            return _context.Cliente.Any(e => e.Id == id);
+            return new ClienteDTO
+            {
+                Id = cliente.Id,
+                NomeCompleto = cliente.NomeCompleto,
+                CPF = cliente.CPF,
+                Endereco = cliente.Endereco,
+                Bairro = cliente.Bairro,
+                CidadeId = cliente.CidadeId,
+                EstadoId = cliente.EstadoId,
+                CEP = cliente.CEP,
+                ClienteTelefones = cliente.ClienteTelefones,
+                Inativo = cliente.Inativo
+            };
         }
     }
 }
