@@ -9,8 +9,8 @@ using RodonavesAPI.Data;
 namespace RodonavesAPI.Migrations
 {
     [DbContext(typeof(RodonavesAPIContext))]
-    [Migration("20201021191825_CriacaoBancoDeDados")]
-    partial class CriacaoBancoDeDados
+    [Migration("20201021194739_CriarBancoDeDados")]
+    partial class CriarBancoDeDados
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33699,8 +33699,8 @@ namespace RodonavesAPI.Migrations
 
                     b.Property<string>("CNPJ")
                         .IsRequired()
-                        .HasColumnType("varchar(11) CHARACTER SET utf8mb4")
-                        .HasMaxLength(11);
+                        .HasColumnType("varchar(14) CHARACTER SET utf8mb4")
+                        .HasMaxLength(14);
 
                     b.Property<int>("CidadeId")
                         .HasColumnType("int");

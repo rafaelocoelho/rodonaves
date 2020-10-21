@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RodonavesAPI.Migrations
 {
-    public partial class CriacaoBancoDeDados : Migration
+    public partial class CriarBancoDeDados : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -68,7 +68,7 @@ namespace RodonavesAPI.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     RazaoSocial = table.Column<string>(maxLength: 150, nullable: false),
                     NomeFantasia = table.Column<string>(maxLength: 150, nullable: false),
-                    CNPJ = table.Column<string>(maxLength: 11, nullable: false),
+                    CNPJ = table.Column<string>(maxLength: 14, nullable: false),
                     Endereco = table.Column<string>(maxLength: 150, nullable: false),
                     Bairro = table.Column<string>(maxLength: 150, nullable: false),
                     CidadeId = table.Column<int>(nullable: false),
