@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RodonavesAPI.Migrations
 {
-    public partial class CriarBancoDeDados : Migration
+    public partial class CriacaoBancoDeDados : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -38,6 +38,8 @@ namespace RodonavesAPI.Migrations
                     DataDeCriacao = table.Column<DateTime>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DataDeAtualizacao = table.Column<DateTime>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    Inativo = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,7 +68,7 @@ namespace RodonavesAPI.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     RazaoSocial = table.Column<string>(maxLength: 150, nullable: false),
                     NomeFantasia = table.Column<string>(maxLength: 150, nullable: false),
-                    CNPJ = table.Column<int>(maxLength: 11, nullable: false),
+                    CNPJ = table.Column<string>(maxLength: 11, nullable: false),
                     Endereco = table.Column<string>(maxLength: 150, nullable: false),
                     Bairro = table.Column<string>(maxLength: 150, nullable: false),
                     CidadeId = table.Column<int>(nullable: false),
@@ -75,6 +77,8 @@ namespace RodonavesAPI.Migrations
                     DataDeCriacao = table.Column<DateTime>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DataDeAtualizacao = table.Column<DateTime>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.ComputedColumn),
+                    Inativo = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

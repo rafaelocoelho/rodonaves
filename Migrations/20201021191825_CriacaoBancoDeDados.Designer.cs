@@ -9,8 +9,8 @@ using RodonavesAPI.Data;
 namespace RodonavesAPI.Migrations
 {
     [DbContext(typeof(RodonavesAPIContext))]
-    [Migration("20201019193238_CriarBancoDeDados")]
-    partial class CriarBancoDeDados
+    [Migration("20201021191825_CriacaoBancoDeDados")]
+    partial class CriacaoBancoDeDados
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33448,6 +33448,7 @@ namespace RodonavesAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DataDeAtualizacao")
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataDeCriacao")
@@ -33461,6 +33462,9 @@ namespace RodonavesAPI.Migrations
 
                     b.Property<int>("EstadoId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Inativo")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("NomeCompleto")
                         .IsRequired()
@@ -33693,14 +33697,16 @@ namespace RodonavesAPI.Migrations
                         .HasColumnType("varchar(8) CHARACTER SET utf8mb4")
                         .HasMaxLength(8);
 
-                    b.Property<int>("CNPJ")
-                        .HasColumnType("int")
+                    b.Property<string>("CNPJ")
+                        .IsRequired()
+                        .HasColumnType("varchar(11) CHARACTER SET utf8mb4")
                         .HasMaxLength(11);
 
                     b.Property<int>("CidadeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DataDeAtualizacao")
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataDeCriacao")
@@ -33714,6 +33720,9 @@ namespace RodonavesAPI.Migrations
 
                     b.Property<int>("EstadoId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Inativo")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("NomeFantasia")
                         .IsRequired()

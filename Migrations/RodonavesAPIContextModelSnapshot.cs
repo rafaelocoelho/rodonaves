@@ -33446,6 +33446,7 @@ namespace RodonavesAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DataDeAtualizacao")
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataDeCriacao")
@@ -33459,6 +33460,9 @@ namespace RodonavesAPI.Migrations
 
                     b.Property<int>("EstadoId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Inativo")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("NomeCompleto")
                         .IsRequired()
@@ -33691,14 +33695,16 @@ namespace RodonavesAPI.Migrations
                         .HasColumnType("varchar(8) CHARACTER SET utf8mb4")
                         .HasMaxLength(8);
 
-                    b.Property<int>("CNPJ")
-                        .HasColumnType("int")
+                    b.Property<string>("CNPJ")
+                        .IsRequired()
+                        .HasColumnType("varchar(11) CHARACTER SET utf8mb4")
                         .HasMaxLength(11);
 
                     b.Property<int>("CidadeId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DataDeAtualizacao")
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime(6)");
 
                     b.Property<DateTime>("DataDeCriacao")
@@ -33712,6 +33718,9 @@ namespace RodonavesAPI.Migrations
 
                     b.Property<int>("EstadoId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Inativo")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("NomeFantasia")
                         .IsRequired()
