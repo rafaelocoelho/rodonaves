@@ -1,6 +1,6 @@
 # Rodonaves API
 
-Essa projeto tem como objetivo tornar as entidades Cliente, ClienteTelefones, Fornecedor e FornecedorTelegones acessível através de uma api.
+Essa projeto tem como objetivo tornar as entidades Cliente, ClienteTelefones, Fornecedor e FornecedorTelefones acessível através de uma api.
 
 ### Instalação
 Ao clonar o respositório, é necessário baixar todas as dependências do projeto. Em seguida, é necessário executar as Migration para criar o banco de dados e as entidades. Para realizar esse procedimento, execute o comando abaixo no console do gerenciador de pacotes do visual studio:
