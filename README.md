@@ -8,6 +8,8 @@ Ao clonar o respositório, é necessário baixar todas as dependências do proje
 Update-Database
 ```
 
+Para criação desse projeto, foi adotado o MySQL como SGBD. Por tanto, caso não queira utilizá-lo, será necessário instalar os pacotes do SGBD que deseja utilizar, assim como alterar as configurações de acesso a base no arquivo `appsethings.json` e na classe `Startup.cs`, de acordo com o banco a ser utilizado. 
+
 ### Utilização
 Ao executar a aplicação, será carregada a página de documentação da api (\swagger), a qual trará todos os endpoints disponíveis assim como a possíbilidade de testá-los atráves de sua interface.
 
