@@ -33,7 +33,6 @@ namespace RodonavesAPI.Models
 
         [
             Required(ErrorMessage = "O campo Endereço é obrigatório."),
-            DisplayName("Nome Completo"),
             MinLength(5, ErrorMessage = "O campo Endereço precisar ter pelo menos 5 caracteres."),
             MaxLength(150, ErrorMessage = "O campo Endereço pode ter no máximo 150 caracteres.")
         ]
