@@ -35,11 +35,33 @@ namespace RodonavesAPI
             services.AddControllersWithViews()
                     .AddNewtonsoftJson(options =>
                             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddSwaggerGen(options => {
+                options.SwaggerDoc("v1",
+                    new Microsoft.OpenApi.Models.OpenApiInfo
+                    {
+                        Title = "API Rodonaves",
+                        Version = "v1",
+                        Description = "Projeto de teste para seleção Rodonaves",
+                        Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                        {
+                            Name = "Rafael de O. Coelho",
+                            Email = "eu.rafaelcoelho@outlook.com"
+                        }
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.RoutePrefix = "swagger";
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Rodonaves");
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
